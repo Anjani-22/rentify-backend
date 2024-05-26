@@ -5,6 +5,7 @@ const {
   getPropertiesBySeller,
   updateProperty,
   deleteProperty,
+  likeProperty,
 } = require("../controllers/propertyController");
 const { protect } = require("../middleware/authMiddleware");
 
@@ -17,20 +18,6 @@ router
   .put(protect, updateProperty)
   .delete(protect, deleteProperty);
 
-router.post("/:id/like", protect, async (req, res) => {
-  try {
-    const property = await Property.findById(req.params.id);
-    if (!property) {
-      return res.status(404).json({ message: "Property not found" });
-    }
-
-    property.likes += 1;
-    await property.save();
-
-    res.json({ message: "Property liked", likes: property.likes });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
+router.post("/:id/like", protect, likeProperty);
 
 module.exports = router;
