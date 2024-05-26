@@ -1,18 +1,19 @@
 const express = require("express");
+
 const {
   createProperty,
-  getAllProperties,
-  getPropertiesBySeller,
+  getProperties,
+  getPropertyById,
   updateProperty,
   deleteProperty,
   likeProperty,
 } = require("../controllers/propertyController");
-const { protect } = require("../middleware/authMiddleware");
+const protect = require("../middleware/authMiddleware.js");
 
 const router = express.Router();
 
-router.route("/").get(getAllProperties).post(protect, createProperty);
-router.route("/seller").get(protect, getPropertiesBySeller);
+router.route("/").get(getProperties).post(protect, createProperty);
+router.route("/seller").get(protect, getPropertyById);
 router
   .route("/:id")
   .put(protect, updateProperty)
