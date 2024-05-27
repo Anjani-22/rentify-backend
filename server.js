@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const authRoutes = require("./routes/authRoutes");
 const propertyRoutes = require("./routes/propertyRoutes");
 const userRoutes = require("./routes/userRoutes");
-const { protect } = require("./middleware/authMiddleware");
+const protect = require("./middleware/authMiddleware");
 
 dotenv.config();
 

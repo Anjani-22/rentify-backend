@@ -7,8 +7,8 @@ const {
   updateProperty,
   deleteProperty,
   likeProperty,
-} = require("../controllers/propertyController");
-const protect = require("../middleware/authMiddleware.js");
+} = require("./../controllers/propertyController");
+const protect = require("./../middleware/authMiddleware.js");
 
 const router = express.Router();
 

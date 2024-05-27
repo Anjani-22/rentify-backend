@@ -2,8 +2,10 @@
 
 const express = require("express");
 const router = express.Router();
-const { sendInterestedEmail } = require("../controllers/interestedController");
-const { protect } = require("../middleware/authMiddleware");
+const {
+  sendInterestedEmail,
+} = require("./../controllers/interestedController");
+const { protect } = require("./../middleware/authMiddleware");
 
 // POST /api/interested
 router.post("/", protect, sendInterestedEmail);
